@@ -70,7 +70,7 @@ public class Main {
         System.out.println("2: Factorial (x!)");
         System.out.println("3: Natural logarithm (ln(x))");
         System.out.println("4: Power (x^y)");
-        System.out.println("Press any other key to exit!!");
+        System.out.println("Press any other key to exit from the app");
 
         int choice = scanner.nextInt();
 
