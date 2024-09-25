@@ -2,7 +2,6 @@
 - name: Pull Docker Image of scientific calculator from Docker Hub
   hosts: localhost
   connection: local
-  #  remote_user: raghunadh
   become: false
   tasks:
     - name: Pull Docker Image
@@ -19,5 +18,10 @@
       service:
         name: docker
         state: started
-    - name: Running container
+
+    - name: Remove all stopped containers
+      shell: docker rm $(docker ps -a -q)
+      ignore_errors: true
+
+    - name: Run scientific calculator container
       shell: docker run -it -d --name scientific_calculator maturiraghu/scientific_calculator
