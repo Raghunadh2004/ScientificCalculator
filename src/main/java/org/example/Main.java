@@ -1,42 +1,68 @@
 package org.example;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Scanner;
 
 public class Main {
 
+    // Logger setup using Log4j
+    private static final Logger logger = LogManager.getLogger(Main.class);
+
     // Square root function (√x)
     public static double squareRoot(double x) {
+        logger.info("Operation: Square root - Start");
         if (x < 0) {
+            logger.warn("Operation: Square root, Invalid input: Square root of negative number.");
             throw new IllegalArgumentException("Square root of negative number is not defined.");
         }
-        return Math.sqrt(x);
+        double result = Math.sqrt(x);
+        logger.info("Operation: Square root, Input: " + x + ", Result: " + result);
+        logger.info("Operation: Square root - End");
+        return result;
     }
 
     // Factorial function (x!)
     public static long factorial(int x) {
+        logger.info("Operation: Factorial - Start");
         if (x < 0) {
+            logger.warn("Operation: Factorial, Invalid input: Factorial of negative number.");
             throw new IllegalArgumentException("Factorial of negative number is not defined.");
         }
         long fact = 1;
         for (int i = 2; i <= x; i++) {
             fact *= i;
         }
+        logger.info("Operation: Factorial, Input: " + x + ", Result: " + fact);
+        logger.info("Operation: Factorial - End");
         return fact;
     }
 
     // Natural logarithm function (ln(x))
     public static double naturalLogarithm(double x) {
+        logger.info("Operation: Natural logarithm - Start");
         if (x <= 0) {
+            logger.warn("Operation: Natural logarithm, Invalid input: Natural logarithm of non-positive number.");
             throw new IllegalArgumentException("Natural logarithm is only defined for positive numbers.");
         }
-        return Math.log(x); // Math.log() gives the natural log (base e)
+        double result = Math.log(x);
+        logger.info("Operation: Natural logarithm, Input: " + x + ", Result: " + result);
+        logger.info("Operation: Natural logarithm - End");
+        return result;
     }
 
     // Power function (x^y)
     public static double power(double x, double y) {
-        return Math.pow(x, y);
+        logger.info("Operation: Power - Start");
+        double result = Math.pow(x, y);
+        logger.info("Operation: Power, Base: " + x + ", Exponent: " + y + ", Result: " + result);
+        logger.info("Operation: Power - End");
+        return result;
     }
 
     public static void main(String[] args) {
+        logger.info("Start of Execution");
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Choose an operation:");
@@ -80,10 +106,12 @@ public class Main {
                 break;
 
             default:
+                logger.warn("Invalid choice entered.");
                 System.out.println("Invalid choice! Please select a valid operation.");
                 break;
         }
 
         scanner.close();
+        logger.info("End of Execution");
     }
 }
