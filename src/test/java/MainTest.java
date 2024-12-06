@@ -28,7 +28,7 @@ public class MainTest {
     @Test
     public void testFactorial_ValidInput() {
         long result = calculator.factorial(5);
-        assertEquals(119, result);
+        assertEquals(120, result);
     }
 
     @Test
